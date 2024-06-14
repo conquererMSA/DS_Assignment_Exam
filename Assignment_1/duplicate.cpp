@@ -7,6 +7,7 @@ int main(){
     for(int i=0; i<size; i++){
         cin>>arr[i];
     }
+    //sort the array
     sort(arr, arr+size);
     bool isDuplicate=false;
     int len=size-1;
