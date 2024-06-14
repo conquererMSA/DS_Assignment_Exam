@@ -1,3 +1,3 @@
 ## Contest Link
 
-\\ https://www.hackerrank.com/contests/assignment-01-a-basic-data-structure-a-batch-05/challenges
+https://www.hackerrank.com/contests/assignment-01-a-basic-data-structure-a-batch-05/challenges
