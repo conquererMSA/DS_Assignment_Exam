@@ -62,7 +62,10 @@ void findIndex(Node*head, int v){
 int main(){
     Node* head=NULL;
     Node* tail=NULL;
-    while(true){
+    int testCase;
+    cin>>testCase;
+   while(testCase--){
+     while(true){
         int v;
         cin>>v;
         if(v==-1) break;
@@ -71,5 +74,6 @@ int main(){
     int v;
     cin>>v;
    findIndex(head,v);
+   }
     return 0;
 }
