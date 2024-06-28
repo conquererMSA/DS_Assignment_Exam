@@ -9,71 +9,55 @@ class Node{
         this->next=NULL;
     }
 };
-void printLinkedList(Node*&head){
-    Node* temp=head;
-    if(head==NULL){
-        cout<<"0"<<endl;
-        return;
+void insertAtTail(Node*& head, Node*& tail, int v) {
+    Node* newNode = new Node(v);
+    if (head == NULL) {
+        head = newNode;
+        tail = newNode;
+    } else {
+        tail->next = newNode;
+        tail = newNode;
     }
-    while(temp!=NULL){
-        cout<<temp->val<<" ";
-        temp=temp->next;
-    }
-    cout<<endl;
-}
-int countSize(Node*head){
-    Node* temp=head;
-    int count=0;
-    while(temp!=NULL){
-        count++;
-        temp=temp->next;
-    }
-    return count;
-}
-void insertAtHead(Node*&head,Node*&tail, int v){
-    Node* newNode=new Node(v);
-    head=newNode;
-    tail=newNode;
-    return;
-}
-void insertAtTail(Node*&head,Node*&tail, int v){
-    Node* newNode=new Node(v);
-    if(head==NULL){
-        insertAtHead(head,tail,v);
-        return;
-    }
-    tail->next=newNode;
-    tail=newNode;
-}
-void findIndex(Node*head, int v){
-    Node*temp=head;
-    int llSize=countSize(head);
-    int isExist=-1;
-    for(int i=0; i<llSize; i++){
-        if(temp->val==v){
-            isExist=i;
-            break;
-        }
-        temp=temp->next;
-    }
-    cout<<isExist<<endl;
 }
 
-int main(){
-    Node* head=NULL;
-    Node* tail=NULL;
-    int testCase;
-    cin>>testCase;
-   while(testCase--){
-     while(true){
-        int v;
-        cin>>v;
-        if(v==-1) break;
-        insertAtTail(head,tail,v);
+int findIndex(Node* head, int v) {
+    Node* start = head;
+    int index = 0;
+    while (start != NULL) {
+        if (start->val == v) {
+            return index;
+        }
+        start = start->next;
+        index++;
     }
-    int v;
-    cin>>v;
-   findIndex(head,v);
-   }
+    return -1;
+}
+
+void clearList(Node*& head) {
+    Node* temp;
+    while (head != NULL) {
+        temp = head;
+        head = head->next;
+        delete temp;
+    }
+}
+
+int main() {
+    int testCase;
+    cin >> testCase;
+    while (testCase--) {
+        Node* head = NULL;
+        Node* tail = NULL;
+        while (true) {
+            int v;
+            cin >> v;
+            if (v == -1) break;
+            insertAtTail(head, tail, v);
+        }
+        int x;
+        cin >> x;
+        cout << findIndex(head, x) << endl;
+        clearList(head);
+    }
     return 0;
 }
